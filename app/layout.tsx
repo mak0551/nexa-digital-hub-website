@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/icon.svg",
+        url: "/images/nexa.jpg",
         type: "image/svg+xml",
       },
     ],
