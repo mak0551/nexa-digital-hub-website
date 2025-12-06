@@ -1,10 +1,13 @@
-"use client"
+"use client";
 
-import { Phone, Mail, MapPin, ArrowRight } from "lucide-react"
+import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 px-4 bg-gradient-to-b from-background to-secondary/5">
+    <section
+      id="contact"
+      className="py-20 px-4 bg-linear-to-b from-background to-secondary/5"
+    >
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -21,7 +24,7 @@ export default function Contact() {
               <Phone className="text-primary" size={28} />
             </div>
             <h3 className="font-semibold mb-2">Phone</h3>
-            <p className="text-muted-foreground">+44 (0) 121 XXXX XXXX</p>
+            <p className="text-muted-foreground">+44 7495 830635</p>
           </div>
 
           <div className="p-6 bg-card border border-border rounded-xl text-center hover:border-primary/50 transition-colors">
@@ -29,21 +32,32 @@ export default function Contact() {
               <Mail className="text-primary" size={28} />
             </div>
             <h3 className="font-semibold mb-2">Email</h3>
-            <p className="text-muted-foreground">hello@nexadigital.com</p>
+            <p className="text-muted-foreground">
+              support@nexadigitalhub.co.uk
+            </p>
           </div>
 
           <div className="p-6 bg-card border border-border rounded-xl text-center hover:border-primary/50 transition-colors">
             <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit mx-auto">
               <MapPin className="text-primary" size={28} />
             </div>
-            <h3 className="font-semibold mb-2">Location</h3>
+            <h3 className="font-semibold mb-2">Location (UK)</h3>
             <p className="text-muted-foreground">Birmingham, UK</p>
+          </div>
+
+          {/* India Location */}
+          <div className="p-6 bg-card border border-border rounded-xl text-center hover:border-primary/50 transition-colors">
+            <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit mx-auto">
+              <MapPin className="text-primary" size={28} />
+            </div>
+            <h3 className="font-semibold mb-2">Location (India)</h3>
+            <p className="text-muted-foreground">Hyderabad, India</p>
           </div>
         </div>
 
         {/* Contact Form */}
         <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl blur-3xl"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-primary/20 to-primary/10 rounded-2xl blur-3xl"></div>
           <form className="relative p-8 bg-card border border-primary/30 rounded-2xl backdrop-blur space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <input
@@ -78,5 +92,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }

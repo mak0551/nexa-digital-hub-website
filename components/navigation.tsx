@@ -46,13 +46,13 @@ export default function Navigation({ isDark, onToggleDark }: NavigationProps) {
 
           {/* Right Icons */}
           <div className="flex items-center gap-4">
-            <button
+            {/* <button
               onClick={onToggleDark}
               className="p-2 hover:bg-secondary rounded-lg transition-colors"
               aria-label="Toggle dark mode"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
+            </button> */}
 
             {/* Mobile Menu Button */}
             <button
