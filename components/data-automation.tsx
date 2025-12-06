@@ -10,7 +10,7 @@ export default function DataAutomation() {
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl blur-3xl"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-primary/20 to-primary/10 rounded-2xl blur-3xl"></div>
             <div className="relative h-80 bg-secondary/30 rounded-2xl border border-primary/30 flex items-center justify-center backdrop-blur">
               <div className="text-center">
                 <BarChart3 className="text-primary/50 mx-auto mb-4" size={64} />
@@ -31,7 +31,7 @@ export default function DataAutomation() {
             <div className="space-y-4">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-center gap-3">
-                  <Zap className="text-primary flex-shrink-0" size={24} />
+                  <Zap className="text-primary shrink-0" size={24} />
                   <span className="text-lg">{feature}</span>
                 </div>
               ))}

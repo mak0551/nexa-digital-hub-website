@@ -10,7 +10,7 @@ export default function About() {
           </h2>
 
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-primary/20 rounded-2xl blur-3xl"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-primary/20 via-transparent to-primary/20 rounded-2xl blur-3xl"></div>
             <div className="relative p-12 bg-card border border-primary/30 rounded-2xl backdrop-blur">
               <p className="text-xl text-muted-foreground leading-relaxed">
                 Nexa Digital Hub helps small businesses scale using digital tools, automation, and modern content.

@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center pt-20 px-4 bg-gradient-to-b from-background via-secondary/5 to-background"
+      className="min-h-screen flex items-center justify-center pt-20 px-4 bg-linear-to-r from-background via-secondary/5 to-background"
     >
       <div className="max-w-5xl mx-auto text-center">
         {/* Logo Image */}
@@ -42,7 +42,7 @@ export default function Hero() {
 
         {/* Decorative element */}
         <div className="mt-16 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-primary/20 rounded-2xl blur-3xl opacity-30"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-primary/20 via-transparent to-primary/20 rounded-2xl blur-3xl opacity-30"></div>
           <div className="relative h-64 md:h-96 bg-secondary/20 rounded-2xl border border-primary/20 flex items-center justify-center backdrop-blur">
             <div className="text-center">
               <div className="text-6xl md:text-8xl font-bold text-primary/20 mb-4">✦</div>

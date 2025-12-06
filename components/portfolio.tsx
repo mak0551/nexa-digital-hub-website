@@ -153,7 +153,7 @@ const portfolioData: PortfolioSection[] = [
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="py-20 px-4 bg-gradient-to-b from-background to-secondary/5">
+    <section id="portfolio" className="py-20 px-4 bg-linear-to-r from-background to-secondary/5">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">

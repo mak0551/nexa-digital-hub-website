@@ -8,7 +8,7 @@ export default function VideoEditing() {
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative md:order-2">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl blur-3xl"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-primary/20 to-primary/10 rounded-2xl blur-3xl"></div>
             <div className="relative h-80 bg-secondary/30 rounded-2xl border border-primary/30 flex items-center justify-center backdrop-blur">
               <div className="text-center">
                 <Film className="text-primary/50 mx-auto mb-4" size={64} />
@@ -29,7 +29,7 @@ export default function VideoEditing() {
             <div className="space-y-4 mb-8">
               {["Reels & TikTok", "YouTube Videos", "Ad Campaigns", "Brand Videos"].map((item, index) => (
                 <div key={index} className="flex items-center gap-3">
-                  <Zap className="text-primary flex-shrink-0" size={20} />
+                  <Zap className="text-primary shrink-0" size={20} />
                   <span className="text-lg">{item}</span>
                 </div>
               ))}
