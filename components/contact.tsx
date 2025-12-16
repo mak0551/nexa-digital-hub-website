@@ -22,19 +22,19 @@ export default function Contact() {
   };
 
   const sendEmails = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault(); // 🔥 REQUIRED
+
     setLoading(true);
     setStatus("");
 
     const templateParams = {
       user_name: form.name,
       user_email: form.email,
-      subject: form.subject,
       message: form.message,
     };
 
     try {
-      // 1️⃣ Send welcome email to USER
+      // USER email
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
         process.env.NEXT_PUBLIC_TEMPLATE_USER!,
@@ -42,7 +42,7 @@ export default function Contact() {
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
 
-      // 2️⃣ Send user details to ADMIN (YOU)
+      // ADMIN email
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
         process.env.NEXT_PUBLIC_TEMPLATE_ADMIN!,
@@ -52,9 +52,9 @@ export default function Contact() {
 
       setStatus("Message sent successfully!");
       setForm({ name: "", email: "", subject: "", message: "" });
-    } catch (error) {
-      console.error("Email error:", error);
-      setStatus("Failed to send message. Please try again.");
+    } catch (err) {
+      console.error(err);
+      setStatus("Failed to send message");
     } finally {
       setLoading(false);
     }
