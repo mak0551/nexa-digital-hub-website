@@ -1,14 +1,72 @@
 "use client";
 
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 
 export default function Contact() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const sendEmails = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus("");
+
+    const templateParams = {
+      user_name: form.name,
+      user_email: form.email,
+      subject: form.subject,
+      message: form.message,
+    };
+
+    try {
+      // 1️⃣ Send welcome email to USER
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_TEMPLATE_USER!,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+
+      // 2️⃣ Send user details to ADMIN (YOU)
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_TEMPLATE_ADMIN!,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+
+      setStatus("Message sent successfully!");
+      setForm({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("Email error:", error);
+      setStatus("Failed to send message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section
       id="contact"
       className="py-20 px-4 bg-linear-to-b from-background to-secondary/5"
     >
       <div className="max-w-4xl mx-auto">
+        {/* Heading */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Let's Build Something <span className="text-primary">Powerful</span>
@@ -18,78 +76,66 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          <div className="p-6 bg-card border border-border rounded-xl text-center hover:border-primary/50 transition-colors">
-            <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit mx-auto">
-              <Phone className="text-primary" size={28} />
-            </div>
-            <h3 className="font-semibold mb-2">Phone</h3>
-            <p className="text-muted-foreground">+44 7495 830635</p>
-          </div>
-
-          <div className="p-6 bg-card border border-border rounded-xl text-center hover:border-primary/50 transition-colors">
-            <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit mx-auto">
-              <Mail className="text-primary" size={28} />
-            </div>
-            <h3 className="font-semibold mb-2">Email</h3>
-            <p className="text-muted-foreground">
-              support@nexadigitalhub.co.uk
-            </p>
-          </div>
-
-          <div className="p-6 bg-card border border-border rounded-xl text-center hover:border-primary/50 transition-colors">
-            <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit mx-auto">
-              <MapPin className="text-primary" size={28} />
-            </div>
-            <h3 className="font-semibold mb-2">Location (UK)</h3>
-            <p className="text-muted-foreground">Birmingham, UK</p>
-          </div>
-
-          {/* India Location */}
-          <div className="p-6 bg-card border border-border rounded-xl text-center hover:border-primary/50 transition-colors">
-            <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit mx-auto">
-              <MapPin className="text-primary" size={28} />
-            </div>
-            <h3 className="font-semibold mb-2">Location (India)</h3>
-            <p className="text-muted-foreground">Hyderabad, India</p>
-          </div>
-        </div>
-
         {/* Contact Form */}
-        <div className="relative">
-          <div className="absolute inset-0 bg-linear-to-r from-primary/20 to-primary/10 rounded-2xl blur-3xl"></div>
-          <form className="relative p-8 bg-card border border-primary/30 rounded-2xl backdrop-blur space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-primary/50 transition-colors"
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-primary/50 transition-colors"
-              />
-            </div>
+        <form
+          onSubmit={sendEmails}
+          className="p-8 bg-card border border-primary/30 rounded-2xl space-y-6"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <input
-              type="text"
-              placeholder="Subject"
-              className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-primary/50 transition-colors"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              placeholder="Your Name"
+              required
+              className="px-4 py-3 border rounded-lg"
             />
-            <textarea
-              placeholder="Your Message"
-              rows={5}
-              className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:border-primary/50 transition-colors resize-none"
-            ></textarea>
-            <button
-              type="submit"
-              className="w-full px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              Contact Now
-              <ArrowRight size={20} />
-            </button>
-          </form>
-        </div>
+
+            <input
+              name="email"
+              type="email"
+              value={form.email}
+              onChange={handleChange}
+              placeholder="Your Email"
+              required
+              className="px-4 py-3 border rounded-lg"
+            />
+          </div>
+
+          <input
+            name="subject"
+            value={form.subject}
+            onChange={handleChange}
+            placeholder="Subject"
+            required
+            className="w-full px-4 py-3 border rounded-lg"
+          />
+
+          <textarea
+            name="message"
+            rows={5}
+            value={form.message}
+            onChange={handleChange}
+            placeholder="Your Message"
+            required
+            className="w-full px-4 py-3 border rounded-lg"
+          />
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full px-8 py-4 bg-primary text-white rounded-lg flex justify-center gap-2"
+          >
+            {loading ? "Sending..." : "Contact Now"}
+            <ArrowRight size={20} />
+          </button>
+
+          {status && (
+            <p className="text-center text-sm text-green-500 font-medium">
+              {status}
+            </p>
+          )}
+        </form>
       </div>
     </section>
   );

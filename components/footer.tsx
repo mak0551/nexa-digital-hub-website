@@ -1,4 +1,6 @@
-"use client"
+"use client";
+
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -7,7 +9,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
             <h3 className="text-lg font-bold text-primary mb-4">NEXA</h3>
-            <p className="text-muted-foreground text-sm">Your all-in-one digital partner for small businesses.</p>
+            <p className="text-muted-foreground text-sm">
+              Your all-in-one digital partner for small businesses.
+            </p>
           </div>
 
           <div>
@@ -40,22 +44,22 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-muted-foreground text-sm">
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <a href="#about-us" className="hover:text-primary transition-colors">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <a href="#portfolio" className="hover:text-primary transition-colors">
                   Portfolio
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <a href="#pricing" className="hover:text-primary transition-colors">
                   Pricing
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <a href="#contact" className="hover:text-primary transition-colors">
                   Contact
                 </a>
               </li>
@@ -66,20 +70,26 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Legal</h4>
             <ul className="space-y-2 text-muted-foreground text-sm">
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link
+                  href="/privacy-policy"
+                  className="hover:text-primary transition-colors"
+                >
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Terms of Service
-                </a>
+                <Link
+                  href="/terms&conditions"
+                  className="hover:text-primary transition-colors"
+                >
+                  Terms and Conditions
+                </Link>
               </li>
-              <li>
+              {/* <li>
                 <a href="#" className="hover:text-primary transition-colors">
                   Cookie Policy
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
@@ -100,5 +110,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
