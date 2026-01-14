@@ -22,7 +22,7 @@ export default function Contact() {
   };
 
   const sendEmails = async (e: React.FormEvent) => {
-    e.preventDefault(); // 🔥 REQUIRED
+    e.preventDefault();
 
     setLoading(true);
     setStatus("");

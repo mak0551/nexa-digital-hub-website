@@ -1,12 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
   return (
     <footer className="bg-card border-t border-border">
       <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
+          {/* Brand */}
           <div>
             <h3 className="text-lg font-bold text-primary mb-4">NEXA</h3>
             <p className="text-muted-foreground text-sm">
@@ -14,6 +16,7 @@ export default function Footer() {
             </p>
           </div>
 
+          {/* Services */}
           <div>
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-muted-foreground text-sm">
@@ -40,32 +43,86 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Company */}
           <div>
             <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-muted-foreground text-sm">
               <li>
-                <a href="#about-us" className="hover:text-primary transition-colors">
+                <a
+                  href="#about-us"
+                  className="hover:text-primary transition-colors"
+                >
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#portfolio" className="hover:text-primary transition-colors">
+                <a
+                  href="#portfolio"
+                  className="hover:text-primary transition-colors"
+                >
                   Portfolio
                 </a>
               </li>
               <li>
-                <a href="#pricing" className="hover:text-primary transition-colors">
+                <a
+                  href="#pricing"
+                  className="hover:text-primary transition-colors"
+                >
                   Pricing
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-primary transition-colors">
+                <a
+                  href="#contact"
+                  className="hover:text-primary transition-colors"
+                >
                   Contact
                 </a>
               </li>
             </ul>
           </div>
 
+          {/* Contact */}
+          <div>
+            <h4 className="font-semibold mb-4">Contact</h4>
+            <ul className="space-y-2 text-muted-foreground text-sm">
+              {/* UK Office */}
+              <li className="flex items-center gap-2">
+                <span>📍</span>
+                <div className="flex items-center gap-1">
+                  <span>Birmingham, UK</span>
+                  <Image src="/flags/uk.png" alt="UK" width={20} height={14} />
+                </div>
+              </li>
+
+              {/* India Office */}
+              <li className="flex items-center gap-2">
+                <span>📍</span>
+                <div className="flex items-center gap-1">
+                  <span>Hyderabad, India</span>
+                  <Image
+                    src="/flags/ind.png"
+                    alt="India"
+                    width={20}
+                    height={14}
+                  />
+                </div>
+              </li>
+
+              {/* Email */}
+              <li className="flex items-center gap-2">
+                <span>📧</span>
+                <a
+                  href="mailto:support@nexadigitalhub.co.uk"
+                  className="hover:text-primary"
+                >
+                  support@nexadigitalhub.co.uk
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal */}
           <div>
             <h4 className="font-semibold mb-4">Legal</h4>
             <ul className="space-y-2 text-muted-foreground text-sm">
@@ -85,15 +142,11 @@ export default function Footer() {
                   Terms and Conditions
                 </Link>
               </li>
-              {/* <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Cookie Policy
-                </a>
-              </li> */}
             </ul>
           </div>
         </div>
 
+        {/* Bottom Bar */}
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center text-muted-foreground text-sm">
           <p>&copy; 2025 Nexa Digital Hub. All rights reserved.</p>
           <div className="flex gap-4 mt-4 md:mt-0">

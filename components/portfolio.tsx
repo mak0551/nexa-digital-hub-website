@@ -1,239 +1,110 @@
-import React from "react";
+"use client";
 
-// TypeScript Types
-type Project = {
-  name: string;
-  client?: string;
-  goal?: string;
-  result?: string;
-  work: string[];
-};
-
-type PortfolioSection = {
+type ServiceItem = {
   title: string;
-  projects: Project[];
+  subtitle: string;
+  examples: string[];
 };
-
-// Portfolio Data
-const portfolioData: PortfolioSection[] = [
-  {
-    title: "Video Editing",
-    projects: [
-      {
-        name: "Short-Form Video Edits (TikTok / Reels)",
-        client: "Local Barber Shop",
-        goal: "Increase walk-in customers",
-        result: "2,000+ views in first week",
-        work: [
-          "Clean transitions",
-          "Subtitle overlays",
-          "Logo intro",
-          "Music syncing",
-        ],
-      },
-      {
-        name: "Promo Video – Cleaning Service",
-        client: "Home Cleaning Company",
-        work: [
-          "Before/after edit",
-          "Voice-over",
-          "Smooth typography",
-          "Brand colours applied",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Social Media Management",
-    projects: [
-      {
-        name: "Instagram Branding Setup",
-        client: "Fashion Startup",
-        work: [
-          "12 branded posts",
-          "Highlight covers",
-          "Content calendar",
-          "Hashtag strategy",
-        ],
-        result: "+340 followers in 20 days",
-      },
-      {
-        name: "Facebook Ad Creatives",
-        client: "Food Delivery Service",
-        work: ["Promo banners", "CTA carousel", "High-contrast food designs"],
-      },
-    ],
-  },
-  {
-    title: "Website Setup",
-    projects: [
-      {
-        name: "Business Website – Plumbing Services",
-        client: "Plumbing Company (UK)",
-        work: [
-          "Full Wix build",
-          "Mobile optimisation",
-          "Service pages",
-          "Booking form",
-        ],
-        result: "Live in 48 hours",
-      },
-      {
-        name: "Landing Page – Fitness Trainer",
-        work: [
-          "High-conversion copy",
-          "WhatsApp automation",
-          "Lead capture section",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Data Entry & Admin",
-    projects: [
-      {
-        name: "CRM Data Cleanup",
-        client: "Real Estate Agency",
-        work: [
-          "2,000+ records cleaned",
-          "De-duplication",
-          "Spreadsheet formatting",
-        ],
-      },
-      {
-        name: "PDF → Excel Conversion",
-        client: "Accountant",
-        work: ["300 invoices digitised", "Organised by date & category"],
-      },
-    ],
-  },
-  {
-    title: "Cybersecurity Services",
-    projects: [
-      {
-        name: "Basic Security Audit",
-        client: "Ecommerce Store",
-        work: [
-          "Password policy setup",
-          "Backup configuration",
-          "Device protection",
-        ],
-      },
-      {
-        name: "Website Security Hardening",
-        client: "Local Home Service Business",
-        work: ["Firewall setup", "Malware scan", "SSL configuration"],
-        result: "98% security improvement",
-      },
-    ],
-  },
-  {
-    title: "Branding & Logo",
-    projects: [
-      {
-        name: "Full Brand Kit – Makeup Artist",
-        work: [
-          "Logo",
-          "Colour palette",
-          "Social templates",
-          "Business card layout",
-        ],
-      },
-      {
-        name: "Identity Refresh – Local Consultant",
-        work: [
-          "Modernised branding",
-          "Typography update",
-          "Clean visual style",
-        ],
-      },
-    ],
-  },
-];
 
 export default function Portfolio() {
+  const services: ServiceItem[] = [
+    {
+      title: "Video Editing",
+      subtitle: "Short-form content for social media",
+      examples: [
+        "Instagram Reels & TikTok edits",
+        "Subtitles & clean transitions",
+        "Brand logo + colour usage",
+        "Before / after edits for services",
+      ],
+    },
+    {
+      title: "Social Media Support",
+      subtitle: "Content & profile management",
+      examples: [
+        "Instagram profile setup",
+        "Branded post designs",
+        "Caption & hashtag assistance",
+        "Posting consistency support",
+      ],
+    },
+    {
+      title: "Website & Landing Pages",
+      subtitle: "Simple, functional business websites",
+      examples: [
+        "Business websites",
+        "Landing pages for lead capture",
+        "Mobile-friendly layouts",
+        "WhatsApp & contact forms",
+      ],
+    },
+    {
+      title: "Admin & Data Work",
+      subtitle: "Behind-the-scenes business support",
+      examples: [
+        "Data entry & cleanup",
+        "PDF to Excel conversion",
+        "CRM updates",
+        "Spreadsheet organisation",
+      ],
+    },
+  ];
+
   return (
-    <section id="portfolio" className="py-20 px-4 bg-linear-to-r from-background to-secondary/5">
+    <section
+      id="portfolio"
+      className="py-20 px-4 bg-linear-to-b from-background to-secondary/5"
+    >
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
+        {/* Header */}
+        <div className="text-center mb-14">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Our <span className="text-primary">Portfolio</span>
+            What We’ve <span className="text-primary">Worked On</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
-            A showcase of our professional work across digital services
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            A snapshot of the type of work we regularly deliver for startups,
+            small businesses, and individual creators.
           </p>
         </div>
 
-        {portfolioData.map((section, idx) => (
-          <div key={idx} className="mb-12">
-            <h3 className="text-3xl font-semibold text-muted-foreground mb-6">
-              {section.title}
-            </h3>
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="relative h-full transition-transform duration-300 hover:scale-[1.02]"
+            >
+              {/* Soft glow */}
+              <div className="absolute inset-0 bg-primary/10 rounded-2xl blur-2xl opacity-40"></div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {section.projects.map((project, pIdx) => (
-                <div
-                  key={pIdx}
-                  className="relative h-full transform transition-transform duration-300 hover:scale-105"
-                >
-                  <div className="absolute inset-0 bg-linear-to-r from-primary/20 to-primary/10 rounded-2xl blur-3xl"></div>
-                  <div className="relative p-6 bg-card border border-border rounded-2xl backdrop-blur-md hover:border-primary/50 transition-colors h-full flex flex-col">
-                    <h4 className="text-xl font-bold text-primary mb-2">
-                      {project.name}
-                    </h4>
-                    {project.client && (
-                      <p className="text-muted-foreground mb-1">
-                        Client: {project.client}
-                      </p>
-                    )}
-                    {project.goal && (
-                      <p className="text-muted-foreground mb-1">
-                        Goal: {project.goal}
-                      </p>
-                    )}
-                    {project.result && (
-                      <p className="text-green-400 font-semibold mb-2">
-                        Result: {project.result}
-                      </p>
-                    )}
-                    <ul className="list-disc list-inside text-muted-foreground mt-auto">
-                      {project.work.map((item, i) => (
-                        <li key={i}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
+              <div className="relative p-6 bg-card border border-border rounded-2xl h-full">
+                <h3 className="text-2xl font-semibold text-primary mb-1">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground mb-4">
+                  {service.subtitle}
+                </p>
+
+                <ul className="space-y-2 text-muted-foreground">
+                  {service.examples.map((example, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="text-primary mt-1">—</span>
+                      <span>{example}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
 
-        {/* Contact Info */}
-        {/* <div className="text-center mt-16">
-          <div className="relative inline-block p-8 bg-card border border-border rounded-2xl backdrop-blur-md">
-            <h3 className="text-2xl font-bold text-primary mb-2">Contact</h3>
-            <p className="text-muted-foreground">
-              Visit:{" "}
-              <a
-                href="https://www.nexadigitalhub.co.uk"
-                className="text-primary underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                www.nexadigitalhub.co.uk
-              </a>
-            </p>
-            <p className="text-muted-foreground">
-              Email:{" "}
-              <a
-                href="mailto:contact@nexadigitalhub.co.uk"
-                className="text-primary underline"
-              >
-                contact@nexadigitalhub.co.uk
-              </a>
-            </p>
-          </div>
-        </div> */}
+        {/* Footer note */}
+        <div className="mt-16 text-center">
+          <p className="text-muted-foreground">
+            Each project is handled with a focus on clarity, consistency, and
+            real-world business needs — not unnecessary complexity.
+          </p>
+        </div>
       </div>
     </section>
   );
